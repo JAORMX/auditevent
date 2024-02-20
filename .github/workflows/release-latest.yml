@@ -1,14 +1,12 @@
 name: Release latest
-
 on:
   push:
     branches:
       - main
-
 jobs:
   # Push to latest
   container-push-latest:
-    uses: metal-toolbox/container-push/.github/workflows/container-push.yml@main
+    uses: metal-toolbox/container-push/.github/workflows/container-push.yml@bcf9ef7e1103629088515b26b202933b2e0c1399 # main
     with:
       name: audittail
       tag: latest
