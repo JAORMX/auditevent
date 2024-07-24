@@ -8,7 +8,7 @@ on:
 jobs:
   # Push to latest
   container-push-latest:
-    uses: metal-toolbox/container-push/.github/workflows/container-push.yml@main
+    uses: metal-toolbox/container-push/.github/workflows/container-push.yml@1e2cf88855aedd3146d502c2252ce23978743126 # main
     with:
       name: audittail
       tag: latest

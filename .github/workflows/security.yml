@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 
-        uses: actions/checkout@v3
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
       
       - name: Run Trivy vulnerability scanner in repo mode
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@d9cd5b1c23aaf8cb31bb09141028215828364bbb # master
         with:
           scan-type: 'fs'
           security-checks: 'vuln,config,secret'
@@ -32,7 +32,7 @@ jobs:
           skip-dirs: 'tests'
 
       - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@55df57218c520418c634010881a652b4116af8d7 # v2
         with:
           sarif_file: 'trivy-results.sarif'
 
@@ -41,18 +41,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 
-        uses: actions/checkout@v3
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
       
       - name: Scan current project
         id: codescan
-        uses: anchore/scan-action@v3
+        uses: anchore/scan-action@3343887d815d7b07465f6fdcd395bd66508d486a # v3
         with:
           path: "."
           severity-cutoff: high
           acs-report-enable: true
 
       - name: upload Anchore scan SARIF report
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@55df57218c520418c634010881a652b4116af8d7 # v2
         if: ${{ always() }}
         with:
           sarif_file: ${{ steps.codescan.outputs.sarif }}
